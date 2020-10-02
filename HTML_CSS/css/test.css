@@ -1,0 +1,67 @@
+body{
+    background-color: rgb(128, 216, 231);
+    font-family: Montserrat, sans-serif;
+ 
+ 
+}
+
+form{
+    text-align: center;
+    padding: 20px;
+    margin-left: 15%;
+    margin-right: 15%;
+    
+  
+  
+}
+
+fieldset{
+    border:2px solid white;
+    border-radius: 3vw;
+    color:white;
+    padding: 30px;
+}
+
+legend{font-size:24px; 
+    font-weight: 300;}
+
+label{float:left;}
+input{ float:right; 
+    text-align: center;
+    border-radius: 15px;
+    border:1px solid white; 
+    width: auto;
+
+    
+        
+}
+
+
+
+#button{
+    margin-top: 30px;
+    background-color: white;
+    font-weight: bold;
+    float: none;
+    
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+      text-align: center;
+    
+    }
+    input {clear: left;
+    float:left;
+}
+    label{float:left;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    clear:left;
+    font-weight: bold;}
+  
+    legend{font-size: 18px;
+    font-weight: bold;}
+
+}
