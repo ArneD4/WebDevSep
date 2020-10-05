@@ -1,0 +1,60 @@
+
+@font-face {
+    font-family: 'myFirstFont';
+    src: url(sansation_light.woff);
+  }
+  
+ h1, p {
+    font-family: myFirstFont, sans-serif;
+    text-transform: uppercase;
+    font-size: 15px;
+    line-height: 5vh;
+    letter-spacing: 1vw;
+    text-align: end;
+    text-shadow:9px 6px 3px grey;
+  }
+
+  p::first-letter{
+      font-weight: bolder;
+      color: red;
+  }
+
+  p::first-line{
+      font-style: italic;
+      font-size: 18px;
+  }
+
+  div{
+      width: 100%;
+      background-color:black;
+      padding:3%;
+      text-align: center;
+  }
+
+
+
+
+
+  div a:visited{
+      color:blue;
+  }
+
+  
+div a{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+    font-size: x-large;
+}
+  div a:hover{
+    color:red;
+    transition: 0.5s;
+}
+
+
+div a:active{
+    color:green;
+}
+
+
