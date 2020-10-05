@@ -14,5 +14,21 @@ p#test {
     background-color: lightsalmon;
     width: 29%;
     height: 33px;
-    overflow: scroll;
+    overflow: hidden;
+    visibility: visible;
+    border-image: url(https://uploads-ssl.webflow.com/5a9423a3f702750001758d4f/5e4699ca314e56ae3a14659e_color-names.png) 11 11 round;
+    border-width: 7px;
+    -webkit-box-shadow: 5px 5px 14px 5px #000000; 
+    box-shadow: 5px 5px 14px 5px #000000
+
+    
+}
+
+h2{ 
+    color: white;
+    border-bottom-style:solid;
+    border-color: white;
+    border-width: 9px;
+    
+    
 }
