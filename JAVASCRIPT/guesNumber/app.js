@@ -13,14 +13,17 @@ function getGuess(){
 function isGuessCorrect(){
     if(Number(guess.value)==correctNumber){
         console.log('correct')
+        return result.innerText=`correct`
     }
 
     else if(Number(guess.value)>correctNumber){
         console.log('go lower')
+        return result.innerText=`go lower`
     }
       
     else {
         console.log('go higher')
+        return result.innerText=`go higher`
     }
 }
 
