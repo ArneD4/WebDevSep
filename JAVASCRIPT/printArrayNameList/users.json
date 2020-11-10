@@ -1,9 +1,4 @@
-let title = document.getElementById('title')
-let userList = document.getElementById('users');
-
-
-
-let users = {
+{
     "data": [
         {
             "id": "0F8JIqi4zwvb77FGz6Wt",
@@ -91,32 +86,3 @@ let users = {
     "limit": 10,
     "offset": 0
 }
-
-
-
-
-console.log(users.data)
-
-
-function getUser(user,index){
-   /// console.log(index) //position in the list
-    console.log(user,"single object") // printing obj
-    //console.log(user.lastName)
-    ///title.innerHTML = `${user.title} ${user.firstName} ${user.lastName}`
-    userList.innerHTML +=`
-    <div class="card">
-    <img class="card-img-top" src="${user.picture}" alt="">
-    <div class="card-body">
-        <h4 class="card-title" id="title">${user.title} ${user.firstName} ${user.lastName}                        </h4>
-        <p class="card-text">
-          <strong>E-mail:</strong>"${user.email}"<br/>
-
-        </p>
-    </div>
-    
-    
-    `
-}
-
-
-users.data.forEach(getUser)
