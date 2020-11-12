@@ -70,7 +70,7 @@ if(gameCounter<maxCounter){
 
     if(Number(num1)<Number(num2)){
         console.log('player 2 wins')
-        result.innerText = 'player 2 wins'
+        result.innerText = 'Player 2 wins'
         counter2++
         count2.innerHTML = `Player 2 score: ${counter2}`
        
@@ -78,13 +78,13 @@ if(gameCounter<maxCounter){
         
     }else if(Number(num1)>Number(num2)){
         console.log('player 1 wins')
-        result.innerText = 'player 1 wins'
+        result.innerText = 'Player 1 wins'
         counter1++
         count1.innerHTML = `Player 1 score: ${counter1}`
         
     }else{
         console.log('equal')
-        result.innerText = 'equal'
+        result.innerText = 'Equal'
     }
 
 
