@@ -11,7 +11,7 @@ nthChild.forEach(function(todo){
 
 var todoInput = document.querySelector('#todo');
 var listofTodos = document.querySelector('.list-group');
-var addTodoBtn = document.querySelector('btn btn-danger')
+var addTodoBtn = document.querySelector('button.btn btn-danger')
 
 
 function addTodo(event){
