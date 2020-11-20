@@ -68,13 +68,14 @@ function removeItem(event){
     taskComplete++
    console.log(taskComplete)
    taskComp.innerText = `Amount of tasks completed: ${taskComplete}`
-   taskCount.innerText = `Amount of tasks: ${todoArray.length - taskComplete}`
+   todoArray.length = todoArray.length-1
+   taskCount.innerText = `Amount of tasks: ${todoArray.length}`
  }
 }
 
 
 //REMOVE ALL TO DOS///
-function removeAllTasks(event){
+function removeAllTasks(){
     // console.log(event.target.parentElement.children[4].children)
     // console.log(listofTodos.innerHTML)
     listofTodos.innerHTML = ""
