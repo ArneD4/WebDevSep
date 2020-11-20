@@ -80,6 +80,7 @@ function removeAllTasks(event){
     listofTodos.innerHTML = ""
     //event.target.parentElement.children[4].remove()
      todoArray = [];
+     taskCount.innerText = `Amount of tasks: ${0}`
     //console.log(todoArray)
 }
 
