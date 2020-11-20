@@ -5,8 +5,12 @@ var todoInput = document.querySelector('#todo');
 var listofTodos = document.querySelector('.list-group');
 var toDos = document.getElementsByTagName("li");
 var addTodoBtn = document.querySelector('.switch')
+var clearAll = document.querySelector('#clear-todos')
+var taskCount = document.querySelector('#taskCount')
+var taskComp = document.querySelector('#taskComp')
 let todoArray;
 let count = 0;
+var taskComplete = 0;
 
 
 //to do array list//
@@ -45,7 +49,8 @@ function addTodo(event){
     nthChild.forEach(function(todo){
     todo.className = "list-group-item d-flex justify-content-between bg-success"})
     count++
-    
+    taskCount.innerText = `Amount of tasks: ${todoArray.length}`
+   
 }
 
 //REMOVE ITEM//
@@ -60,12 +65,34 @@ function removeItem(event){
     // console.log('TODOS:',toDos)
    event.target.parentElement.parentElement.remove()
     console.log(todoArray)
-   
+    taskComplete++
+   console.log(taskComplete)
+   taskComp.innerText = `Amount of tasks completed: ${taskComplete}`
+   taskCount.innerText = `Amount of tasks: ${todoArray.length - taskComplete}`
  }
 }
+
+
+//REMOVE ALL TO DOS///
+function removeAllTasks(event){
+    // console.log(event.target.parentElement.children[4].children)
+    // console.log(listofTodos.innerHTML)
+    listofTodos.innerHTML = ""
+    //event.target.parentElement.children[4].remove()
+     todoArray = [];
+    //console.log(todoArray)
+}
+
+//TASK COUNTER//
+
+
+
+
 
 //eventlistener//
 
 console.log(todoArray)
+
+clearAll.addEventListener('click', removeAllTasks)
 addTodoBtn.addEventListener('click', addTodo)
 listofTodos.addEventListener('click',removeItem)
