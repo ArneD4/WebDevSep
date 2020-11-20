@@ -1,24 +1,16 @@
-
-///
-
-
-
-var nthChild = document.querySelectorAll('.list-group-item:nth-child(odd)');
-
-///
-
-nthChild.forEach(function(todo){
-    todo.className = "list-group-item d-flex justify-content-between bg-success"
-})
-///add todo + todo array
+///add todo + todo array///
 
 
 var todoInput = document.querySelector('#todo');
 var listofTodos = document.querySelector('.list-group');
+var toDos = document.getElementsByTagName("li");
 var addTodoBtn = document.querySelector('.switch')
-console.log(addTodoBtn)
-
 let todoArray;
+let count = 0;
+
+
+//to do array list//
+
 function addtodoArray(todo){
     if(todoArray === null || todoArray === undefined){
         todoArray = []; 
@@ -29,7 +21,7 @@ function addtodoArray(todo){
     console.log(todoArray)
 }
 
-
+//to do html list//
 
 function addTodo(event){
     event.preventDefault();
@@ -39,7 +31,8 @@ function addTodo(event){
     var a = document.createElement('a')
     a.href = "#";
     a.className = "delete-item";
-    a.onclick= "removeItem(this)";
+    a.id = count
+   // a.onclick = "removeItem(this)"
     var i = document.createElement('i')
     i.className = "fa fa-remove"
     a.appendChild(i)
@@ -47,19 +40,32 @@ function addTodo(event){
     li.appendChild(a)
     listofTodos.appendChild(li)
     addtodoArray(todoInput.value)
+    ///background for odd numbers///
+    var nthChild = document.querySelectorAll('.list-group-item:nth-child(odd)');
+    nthChild.forEach(function(todo){
+    todo.className = "list-group-item d-flex justify-content-between bg-success"})
+    count++
+    
 }
 
-
-addTodoBtn.addEventListener('click', addTodo)
-
-
-///REMOVE ITEM
+//REMOVE ITEM//
 function removeItem(event){
-    console.log(event.parentElement)
-  event.parentElement.remove()
+ if(event.target.className == "fa fa-remove"){
+    // console.log('THE REMOVED ELEMENT:   ',event.target.parentElement.parentElement)
+    // console.log(' THE CHILDREN OF THIS:   ',this.children)
+    // console.log('THE CHILDNODES OF THE REMOVED ELEMENT:     ',event.target.parentElement.parentElement.childNodes)
+    var x = Number(event.target.parentElement.id)
+    delete todoArray[x]
+    ///console.log(x,'index position')
+    // console.log('TODOS:',toDos)
+   event.target.parentElement.parentElement.remove()
+    console.log(todoArray)
+   
+ }
 }
 
+//eventlistener//
 
-a.addEventListener('click', removeItem)
-
-
+console.log(todoArray)
+addTodoBtn.addEventListener('click', addTodo)
+listofTodos.addEventListener('click',removeItem)
