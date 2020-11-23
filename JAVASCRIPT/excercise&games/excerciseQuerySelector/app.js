@@ -14,7 +14,7 @@ var taskComplete = 0;
 
 
 //to do array list//
-
+//todo = todoInput.value
 function addtodoArray(todo){
     if(todoArray === null || todoArray === undefined){
         todoArray = []; 
@@ -45,12 +45,13 @@ function addTodo(event){
     listofTodos.appendChild(li)
     addtodoArray(todoInput.value)
     ///background for odd numbers///
-    var nthChild = document.querySelectorAll('.list-group-item:nth-child(odd)');
-    nthChild.forEach(function(todo){
-    todo.className = "list-group-item d-flex justify-content-between bg-success"})
+    // var nthChild = document.querySelectorAll('.list-group-item:nth-child(odd)');
+    // nthChild.forEach(function(todo){
+    // todo.className = "list-group-item d-flex justify-content-between bg-success"})
+    //count
     count++
     taskCount.innerText = `Amount of tasks: ${todoArray.length}`
-   
+    
 }
 
 //REMOVE ITEM//
@@ -70,6 +71,7 @@ function removeItem(event){
    taskComp.innerText = `Amount of tasks completed: ${taskComplete}`
    todoArray.length = todoArray.length-1
    taskCount.innerText = `Amount of tasks: ${todoArray.length}`
+   
  }
 }
 
@@ -87,13 +89,33 @@ function removeAllTasks(){
 
 //TASK COUNTER//
 
+//SEARCH TODO//
+var searchInput = document.querySelector('#filter')
 
 
+var searchBtn = document.querySelector('#search')
 
+searchBtn.addEventListener('click',function(){
+    console.log(searchInput.value)
+    console.log(listofTodos.querySelectorAll("li"))
+    var innerTodo;
+    
+    for(i=0;i<toDos.length; i++){
+        innerTodo = toDos[i].innerText;
+        console.log(innerTodo)
+        if(searchInput.value === innerTodo){
+            console.log('same')
+           toDos[i].style.backgroundColor="yellow"
+        }else{
+            console.log('not the same')
+            toDos[i].style.backgroundColor="white"
+        }
+    }
+    
+})
 
 //eventlistener//
 
-console.log(todoArray)
 
 clearAll.addEventListener('click', removeAllTasks)
 addTodoBtn.addEventListener('click', addTodo)
