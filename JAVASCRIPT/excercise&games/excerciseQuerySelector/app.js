@@ -72,13 +72,12 @@ const getDataStorage = () => {
     }
     return temp;
 }
-
-
 //load list to inner HTML
 document.addEventListener('DOMContentLoaded', () => {
     let temp = getDataStorage();
     temp.forEach(todo => makeTodo(todo))
 })
+
 
 //REMOVE ITEM//
 function removeItem(event){
@@ -91,12 +90,15 @@ function removeItem(event){
  }
 }
 
+
 //REMOVE ALL TO DOS///
 const removeAllTasks = () =>{
     listofTodos.innerHTML = ""
     todoArray = [];
     localStorage.setItem('data', null)
 }
+
+
 
 //TASK COUNTER//
 
