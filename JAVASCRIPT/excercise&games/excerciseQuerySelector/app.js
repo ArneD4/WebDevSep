@@ -38,7 +38,7 @@ function loadList(){
                listofTodos.appendChild(li)
                todoArray = temp
                count++
-                taskCount.innerText = `Amount of tasks: ${todoArray.length}`
+               taskCount.innerText = `Amount of tasks: ${todoArray.length}`
                
                }
                
@@ -63,7 +63,6 @@ function addtodoArray(todo){
 
 
 //to do html list//
-
 function addTodo(event){
     event.preventDefault();
     var li = document.createElement('li');
