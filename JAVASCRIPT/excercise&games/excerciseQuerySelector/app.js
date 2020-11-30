@@ -1,6 +1,4 @@
-///add todo + todo array///
-
-
+//declare var, let, const//
 var todoInput = document.querySelector('#todo');
 var listofTodos = document.querySelector('.list-group');
 var toDos = document.getElementsByTagName("li");
@@ -12,148 +10,121 @@ let todoArray;
 let count = 0;
 var taskComplete = 0;
 
-//LOAD LIST FROM LOCAL STORAGE//
-document.addEventListener('DOMContentLoaded', loadList);
-function loadList(){
-               todoArray = localStorage.getItem('todo')
-               var temp = todoArray.split(",")
-               console.log(temp.length)
-               for(index=0;index<temp.length;index++){
-               console.log(temp[index])
-               console.log(todo.length)
+
+//HTML ELEMENT CREATOR//
+const tagNameGenerator = t => document.createElement(t)
+const x = t => document.createElement(t)
 
 
-               var li = document.createElement('li');
-               var title = document.createTextNode(temp[index])
-               li.className = "list-group-item d-flex justify-content-between"
-               var a = document.createElement('a')
-               a.href = "#";
-               a.className = "delete-item";
-               a.id = count
-              var i = document.createElement('i')
-               i.className = "fa fa-remove"
-               a.appendChild(i)
-               li.appendChild(title)
-               li.appendChild(a)
-               listofTodos.appendChild(li)
-               todoArray = temp
-               count++
-               taskCount.innerText = `Amount of tasks: ${todoArray.length}`
-               
-               }
-               
-}
-
-
-
-//to do array list//
-//todo = todoInput.value
-function addtodoArray(todo){
-    if(todoArray === null || todoArray === undefined){
-        todoArray = []; 
-        todoArray.push(todo);
-    }else{
-        todoArray.push(todo);
-    }
-    console.log('todo Array',todoArray)
-    localStorage.setItem('todo', todoArray)
-}
-
-
-
-
-//to do html list//
-function addTodo(event){
-    event.preventDefault();
-    var li = document.createElement('li');
-    var title = document.createTextNode(todoInput.value)
+//ADD TODO TO HTML//
+const makeTodo = todo_title => {
+    let li = x('li');
+    let title = document.createTextNode(todo_title)
     li.className = "list-group-item d-flex justify-content-between"
-    var a = document.createElement('a')
+    let a = x('a')
     a.href = "#";
     a.className = "delete-item";
     a.id = count
-   // a.onclick = "removeItem(this)"
-    var i = document.createElement('i')
+    count++  
+    let i = x('i')
     i.className = "fa fa-remove"
     a.appendChild(i)
     li.appendChild(title)
     li.appendChild(a)
-    listofTodos.appendChild(li)
-    addtodoArray(todoInput.value)
-
-    ///background for odd numbers///
-    // var nthChild = document.querySelectorAll('.list-group-item:nth-child(odd)');
-    // nthChild.forEach(function(todo){
-    // todo.className = "list-group-item d-flex justify-content-between bg-success"})
-    //count
-    count++
-    taskCount.innerText = `Amount of tasks: ${todoArray.length}`
-    
+    addTodoStorage(todo_title)
+    addTodoToArray(todo_title)
+    return listofTodos.appendChild(li) 
 }
+
+
+//SET INPUT TO TODO ARRAY LIST//
+const addTodoToArray = todo => {
+    if (todoArray === null || todoArray === undefined) {
+        todoArray = []; // init array
+        console.log('array initialized')
+        todoArray.push(todo)
+    } else {
+        todoArray.push(todo)
+    }
+    console.log(todoArray)
+}
+
+//SET INPUT TO LOCAL STORAGE//
+const addTodoStorage = title =>{
+    let temp = getDataStorage();
+    temp.push(title)
+    localStorage.setItem('data',JSON.stringify(temp))
+}
+
+//ADD TODO FROM INPUT//
+const addTodo = event =>{
+    event.preventDefault();
+    makeTodo(todoInput.value);
+}
+
+//LOAD LIST FROM LOCAL STORAGE ==> DOMContentLoaded//
+const getDataStorage = () => {
+    let temp;
+    if(localStorage.getItem('data') === null){
+        temp = []
+    }else {
+        temp = JSON.parse(localStorage.getItem('data'))
+    }
+    return temp;
+}
+
+
+//load list to inner HTML
+document.addEventListener('DOMContentLoaded', () => {
+    let temp = getDataStorage();
+    temp.forEach(todo => makeTodo(todo))
+})
 
 //REMOVE ITEM//
 function removeItem(event){
  if(event.target.className == "fa fa-remove"){
-    // console.log('THE REMOVED ELEMENT:   ',event.target.parentElement.parentElement)
-    // console.log(' THE CHILDREN OF THIS:   ',this.children)
-    // console.log('THE CHILDNODES OF THE REMOVED ELEMENT:     ',event.target.parentElement.parentElement.childNodes)
     var x = Number(event.target.parentElement.id)
+    console.log(x)
     delete todoArray[x]
-    ///console.log(x,'index position')
-    // console.log('TODOS:',toDos)
-   event.target.parentElement.parentElement.remove()
     console.log(todoArray)
-    taskComplete++
-   console.log(taskComplete)
-   taskComp.innerText = `Amount of tasks completed: ${taskComplete}`
-   todoArray.length = todoArray.length-1
-   taskCount.innerText = `Amount of tasks: ${todoArray.length}`
-   
+    event.target.parentElement.parentElement.remove()
  }
 }
 
-
 //REMOVE ALL TO DOS///
-function removeAllTasks(){
-    // console.log(event.target.parentElement.children[4].children)
-    // console.log(listofTodos.innerHTML)
+const removeAllTasks = () =>{
     listofTodos.innerHTML = ""
-    //event.target.parentElement.children[4].remove()
-     todoArray = [];
-     taskCount.innerText = `Amount of tasks: ${0}`
-    //console.log(todoArray)
+    todoArray = [];
+    localStorage.setItem('data', null)
 }
 
 //TASK COUNTER//
 
 //SEARCH TODO//
 var searchInput = document.querySelector('#filter')
-
-
 var searchBtn = document.querySelector('#search')
 
 searchBtn.addEventListener('click',function(){
     console.log(searchInput.value)
     console.log(listofTodos.querySelectorAll("li"))
     var innerTodo;
-    
     for(i=0;i<toDos.length; i++){
         innerTodo = toDos[i].innerText;
         console.log(innerTodo)
         if(searchInput.value === innerTodo){
-            console.log('same')
+           console.log('same')
            toDos[i].style.backgroundColor="yellow"
         }else{
             console.log('not the same')
             toDos[i].style.backgroundColor="white"
         }
     }
-    
 })
 
 //eventlistener//
-
-
 clearAll.addEventListener('click', removeAllTasks)
 addTodoBtn.addEventListener('click', addTodo)
 listofTodos.addEventListener('click',removeItem)
+
+//
+
