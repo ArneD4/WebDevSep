@@ -12,6 +12,39 @@ let todoArray;
 let count = 0;
 var taskComplete = 0;
 
+//LOAD LIST FROM LOCAL STORAGE//
+document.addEventListener('DOMContentLoaded', loadList);
+function loadList(){
+               todoArray = localStorage.getItem('todo')
+               var temp = todoArray.split(",")
+               console.log(temp.length)
+               for(index=0;index<temp.length;index++){
+               console.log(temp[index])
+               console.log(todo.length)
+
+
+               var li = document.createElement('li');
+               var title = document.createTextNode(temp[index])
+               li.className = "list-group-item d-flex justify-content-between"
+               var a = document.createElement('a')
+               a.href = "#";
+               a.className = "delete-item";
+               a.id = count
+              var i = document.createElement('i')
+               i.className = "fa fa-remove"
+               a.appendChild(i)
+               li.appendChild(title)
+               li.appendChild(a)
+               listofTodos.appendChild(li)
+               todoArray = temp
+               count++
+                taskCount.innerText = `Amount of tasks: ${todoArray.length}`
+               
+               }
+               
+}
+
+
 
 //to do array list//
 //todo = todoInput.value
@@ -22,8 +55,12 @@ function addtodoArray(todo){
     }else{
         todoArray.push(todo);
     }
-    console.log(todoArray)
+    console.log('todo Array',todoArray)
+    localStorage.setItem('todo', todoArray)
 }
+
+
+
 
 //to do html list//
 
@@ -44,6 +81,7 @@ function addTodo(event){
     li.appendChild(a)
     listofTodos.appendChild(li)
     addtodoArray(todoInput.value)
+
     ///background for odd numbers///
     // var nthChild = document.querySelectorAll('.list-group-item:nth-child(odd)');
     // nthChild.forEach(function(todo){
