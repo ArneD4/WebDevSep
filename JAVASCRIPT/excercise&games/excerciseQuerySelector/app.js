@@ -10,10 +10,29 @@ let todoArray;
 let count = 0;
 var taskComplete = 0;
 
-
 //HTML ELEMENT CREATOR//
 const tagNameGenerator = t => document.createElement(t)
 const x = t => document.createElement(t)
+
+
+//SET INPUT TO LOCAL STORAGE//
+const addTodoToStorage = title => {
+    let temp = getDataStorage(); // current array (todolist) in localStorage
+    console.log(temp)
+    console.log(getDataStorage())
+    //temp.push(title);
+   // localStorage.setItem('data', JSON.stringify(temp))
+}
+
+//ADD TODO FROM INPUT//
+const addTodo = event =>{
+    event.preventDefault();
+    makeTodo(todoInput.value);
+    addTodoToArray(todoInput.value);
+    addTodoToStorage(todoInput.value);
+}
+addTodoBtn.addEventListener('click', addTodo);
+
 
 
 //ADD TODO TO HTML//
@@ -21,18 +40,16 @@ const makeTodo = todo_title => {
     let li = x('li');
     let title = document.createTextNode(todo_title)
     li.className = "list-group-item d-flex justify-content-between"
-    let a = x('a')
+    let a = x('a');
     a.href = "#";
     a.className = "delete-item";
-    a.id = count
-    count++  
-    let i = x('i')
+   // a.id = count;
+   // count++  ;
+    let i = x('i');
     i.className = "fa fa-remove"
     a.appendChild(i)
     li.appendChild(title)
     li.appendChild(a)
-    addTodoStorage(todo_title)
-    addTodoToArray(todo_title)
     return listofTodos.appendChild(li) 
 }
 
@@ -49,34 +66,41 @@ const addTodoToArray = todo => {
     console.log(todoArray)
 }
 
-//SET INPUT TO LOCAL STORAGE//
-const addTodoStorage = title =>{
-    let temp = getDataStorage();
-    temp.push(title)
-    localStorage.setItem('data',JSON.stringify(temp))
-}
-
-//ADD TODO FROM INPUT//
-const addTodo = event =>{
-    event.preventDefault();
-    makeTodo(todoInput.value);
-}
 
 //LOAD LIST FROM LOCAL STORAGE ==> DOMContentLoaded//
 const getDataStorage = () => {
     let temp;
-    if(localStorage.getItem('data') === null){
+    if (localStorage.getItem('data') === null) {
         temp = []
-    }else {
+    } else {
         temp = JSON.parse(localStorage.getItem('data'))
     }
     return temp;
 }
-//load list to inner HTML
-document.addEventListener('DOMContentLoaded', () => {
+// //load list to inner HTML
+document.addEventListener('DOMContentLoaded', e => {
+    e.preventDefault();
     let temp = getDataStorage();
     temp.forEach(todo => makeTodo(todo))
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //REMOVE ITEM//
@@ -89,7 +113,7 @@ function removeItem(event){
     event.target.parentElement.parentElement.remove()
  }
 }
-
+listofTodos.addEventListener('click',removeItem)
 
 //REMOVE ALL TO DOS///
 const removeAllTasks = () =>{
@@ -97,10 +121,15 @@ const removeAllTasks = () =>{
     todoArray = [];
     localStorage.setItem('data', null)
 }
-
+clearAll.addEventListener('click', removeAllTasks);
 
 
 //TASK COUNTER//
+
+
+
+
+
 
 //SEARCH TODO//
 var searchInput = document.querySelector('#filter')
@@ -122,11 +151,4 @@ searchBtn.addEventListener('click',function(){
         }
     }
 })
-
-//eventlistener//
-clearAll.addEventListener('click', removeAllTasks)
-addTodoBtn.addEventListener('click', addTodo)
-listofTodos.addEventListener('click',removeItem)
-
-//
 
