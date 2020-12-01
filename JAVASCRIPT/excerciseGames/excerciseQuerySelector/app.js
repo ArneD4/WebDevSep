@@ -14,14 +14,24 @@ var taskComplete = 0;
 const tagNameGenerator = t => document.createElement(t)
 const x = t => document.createElement(t)
 
+//LOAD LIST FROM LOCAL STORAGE ==> DOMContentLoaded//
+const getDataStorage = () => {
+    let temp;
+    if (localStorage.getItem('data') === null) {
+        temp = []
+    } else {
+        temp = JSON.parse(localStorage.getItem('data'))
+    }
+    return temp;
+}
 
 //SET INPUT TO LOCAL STORAGE//
 const addTodoToStorage = title => {
     let temp = getDataStorage(); // current array (todolist) in localStorage
     console.log(temp)
     console.log(getDataStorage())
-    //temp.push(title);
-   // localStorage.setItem('data', JSON.stringify(temp))
+    temp.push(title);
+    localStorage.setItem('data', JSON.stringify(temp))
 }
 
 //ADD TODO FROM INPUT//
@@ -67,41 +77,13 @@ const addTodoToArray = todo => {
 }
 
 
-//LOAD LIST FROM LOCAL STORAGE ==> DOMContentLoaded//
-const getDataStorage = () => {
-    let temp;
-    if (localStorage.getItem('data') === null) {
-        temp = []
-    } else {
-        temp = JSON.parse(localStorage.getItem('data'))
-    }
-    return temp;
-}
+
 // //load list to inner HTML
 document.addEventListener('DOMContentLoaded', e => {
     e.preventDefault();
     let temp = getDataStorage();
     temp.forEach(todo => makeTodo(todo))
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //REMOVE ITEM//
 function removeItem(event){
@@ -152,3 +134,10 @@ searchBtn.addEventListener('click',function(){
     }
 })
 
+var datepicker = new tui.DatePicker('#wrapper', {
+    date: new Date(),
+    input: {
+        element: '#datepicker-input',
+        format: 'yyyy-MM-dd'
+    }
+});
