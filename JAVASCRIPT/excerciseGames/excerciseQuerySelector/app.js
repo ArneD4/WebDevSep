@@ -10,9 +10,18 @@ let todoArray;
 let count = 0;
 var taskComplete = 0;
 
+console.log(localStorage)
+
 //HTML ELEMENT CREATOR//
 const tagNameGenerator = t => document.createElement(t)
 const x = t => document.createElement(t)
+
+//SET INPUT TO LOCAL STORAGE//
+const addTodoToStorage = title => {
+    let temp = getDataStorage(); // current array (todolist) in localStorage
+    temp.push(title);
+    localStorage.setItem('data', JSON.stringify(temp))
+}
 
 //LOAD LIST FROM LOCAL STORAGE ==> DOMContentLoaded//
 const getDataStorage = () => {
@@ -25,14 +34,7 @@ const getDataStorage = () => {
     return temp;
 }
 
-//SET INPUT TO LOCAL STORAGE//
-const addTodoToStorage = title => {
-    let temp = getDataStorage(); // current array (todolist) in localStorage
-    console.log(temp)
-    console.log(getDataStorage())
-    temp.push(title);
-    localStorage.setItem('data', JSON.stringify(temp))
-}
+
 
 //ADD TODO FROM INPUT//
 const addTodo = event =>{
