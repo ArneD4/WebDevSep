@@ -38,10 +38,15 @@ Math.prototype.Div = function(x,y){
 
 
 let calc1 = new Math(3,4)
+let calc2 = new Math(45,89)
 calc1.Sum();
 calc1.Abs();
 calc1.Mult();
 calc1.Div();
+calc2.Sum();
+calc2.Abs();
+calc2.Mult();
+calc2.Div();
 
 // // Math.property.Min = function(x,y,z){
 // //     let result = x - y;
