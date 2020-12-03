@@ -12,16 +12,41 @@ var taskComplete = 0;
 
 console.log(localStorage)
 
-//HTML ELEMENT CREATOR//
-const tagNameGenerator = t => document.createElement(t)
-const x = t => document.createElement(t)
-
 //SET INPUT TO LOCAL STORAGE//
 const addTodoToStorage = title => {
     let temp = getDataStorage(); // current array (todolist) in localStorage
     temp.push(title);
-    localStorage.setItem('data', JSON.stringify(temp))
+    localStorage.setItem('data',JSON.stringify(temp));
 }
+
+//SET INPUT TO TODO ARRAY LIST//
+// const addTodoToArray = todo => {
+//     if (todoArray === null || todoArray === undefined) {
+//         todoArray = []; // init array
+//         console.log('array initialized')
+//         todoArray.push(todo)
+//     } else {
+//         todoArray.push(todo)
+//     }
+//     console.log('hi',todoArray)
+// }
+
+//ADD TODO FROM INPUT//
+const addTodo = event =>{
+    event.preventDefault();
+    let tmp = todoInput.value
+    makeTodo(tmp);
+    addTodoToArray(todoInput.value);
+    addTodoToStorage(tmp);
+}
+addTodoBtn.addEventListener('click', addTodo);
+
+
+//HTML ELEMENT CREATOR//
+const tagNameGenerator = t => document.createElement(t)
+const x = t => document.createElement(t)
+
+
 
 //LOAD LIST FROM LOCAL STORAGE ==> DOMContentLoaded//
 const getDataStorage = () => {
@@ -36,14 +61,6 @@ const getDataStorage = () => {
 
 
 
-//ADD TODO FROM INPUT//
-const addTodo = event =>{
-    event.preventDefault();
-    makeTodo(todoInput.value);
-    addTodoToArray(todoInput.value);
-    addTodoToStorage(todoInput.value);
-}
-addTodoBtn.addEventListener('click', addTodo);
 
 
 
@@ -55,8 +72,8 @@ const makeTodo = todo_title => {
     let a = x('a');
     a.href = "#";
     a.className = "delete-item";
-   // a.id = count;
-   // count++  ;
+    a.id = count;
+    count++  ;
     let i = x('i');
     i.className = "fa fa-remove"
     a.appendChild(i)
@@ -66,17 +83,7 @@ const makeTodo = todo_title => {
 }
 
 
-//SET INPUT TO TODO ARRAY LIST//
-const addTodoToArray = todo => {
-    if (todoArray === null || todoArray === undefined) {
-        todoArray = []; // init array
-        console.log('array initialized')
-        todoArray.push(todo)
-    } else {
-        todoArray.push(todo)
-    }
-    console.log(todoArray)
-}
+
 
 
 
@@ -90,11 +97,10 @@ document.addEventListener('DOMContentLoaded', e => {
 //REMOVE ITEM//
 function removeItem(event){
  if(event.target.className == "fa fa-remove"){
-    var x = Number(event.target.parentElement.id)
-    console.log(x)
-    delete todoArray[x]
-    console.log(todoArray)
-    event.target.parentElement.parentElement.remove()
+    event.target.parentElement.parentElement.remove();
+    //let indx = Number(event.target.parentElement.id);
+    //console.log(indx)
+    //console.log(todoArray[indx])
  }
 }
 listofTodos.addEventListener('click',removeItem)
@@ -103,14 +109,14 @@ listofTodos.addEventListener('click',removeItem)
 const removeAllTasks = () =>{
     listofTodos.innerHTML = ""
     todoArray = [];
-    localStorage.setItem('data', null)
+    localStorage.setItem('data', [" "])
 }
 clearAll.addEventListener('click', removeAllTasks);
 
 
 //TASK COUNTER//
 
-
+console.log(listofTodos.lastChild)
 
 
 
@@ -143,3 +149,4 @@ var datepicker = new tui.DatePicker('#wrapper', {
         format: 'yyyy-MM-dd'
     }
 });
+
