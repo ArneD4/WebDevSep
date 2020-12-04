@@ -43,7 +43,7 @@ addTodoBtn.addEventListener('click', addTodo);
 
 
 //HTML ELEMENT CREATOR//
-const tagNameGenerator = t => document.createElement(t)
+//const tagNameGenerator = t => document.createElement(t)
 const x = t => document.createElement(t)
 
 
