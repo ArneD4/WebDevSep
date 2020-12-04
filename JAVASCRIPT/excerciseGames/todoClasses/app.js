@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let temp = getDataStorage();
     temp.forEach(todo.addToDo)   
+    toDoCounter()
 })
 //
 
