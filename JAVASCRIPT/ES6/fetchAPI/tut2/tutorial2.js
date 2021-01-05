@@ -4,7 +4,8 @@ const input = document.querySelector("#input")
 const submit = document.querySelector("#submit")
 const response = document.querySelector(".response")
 const modal = document.querySelector("#myModal");
-const modalTitle = document.querySelector(".modal-title")
+let modalTitle = document.querySelector(".modal-title")
+let modalBody = document.querySelector(".modal-body")
 
 submit.addEventListener('click',(e)=>{
     e.preventDefault();
@@ -14,18 +15,21 @@ submit.addEventListener('click',(e)=>{
     fetch(api)
     .then(data=>data.json())
     .then(res=>res.filter((e)=>{
-    console.log(input.value)
     return e.id == temp
     }))
-    .then(user=>user[0].title)
     .then(result=>makeModal(result))
 
 
 })
 
+
+
+
 function makeModal(result) {
     modal.style.display = "block";
-    modalTitle.innerHTML=result
+    modalTitle.innerHTML=result[0].title
+    modalBody.innerHTML=result[0].body
+
   }
 
   window.onclick = function(event) {
