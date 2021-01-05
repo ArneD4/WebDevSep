@@ -26,6 +26,14 @@ let users = [
 ];
 
 
+let ShowUsers = ()=>{
+    setTimeout(()=>{
+        users.forEach((n)=>{
+            console.log(n.name)
+        })
+    },2000)
+}
+
 let AddUser = (id,name,username,email)=>{
     return new Promise((resolve,reject)=>{
         if(typeof id == null){
@@ -43,4 +51,8 @@ AddUser(8,'Arne','D4','arne@mail.com')
 .then(res=>
     console.log(res))
 
+    
+
+
+ShowUsers()
 
