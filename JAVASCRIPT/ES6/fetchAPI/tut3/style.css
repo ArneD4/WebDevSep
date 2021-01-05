@@ -1,0 +1,9 @@
+body{
+    background-color: rgb(27, 27, 34);
+    font-family:  sans-serif;
+}
+
+.jumbotron {
+    background-color: rgb(205, 213, 223);
+    color: rgb(64, 72, 73);
+}
