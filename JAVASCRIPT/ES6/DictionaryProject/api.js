@@ -17,6 +17,8 @@ searchBtn.addEventListener('click',()=>{
         bodyText.innerText = res.message
         pron.innerText = res.resolution
         wordClass.innerText = "undefined"
+        audioLink.href = '#'
+    
     }else{
         title.innerText = input.value
         bodyText.innerText = res[0].meanings[0].definitions[0].definition
