@@ -130,7 +130,7 @@ audioLink.addEventListener('click',()=>{
             audioLink.className="fa fa-pause"
             setTimeout(()=>{
             audioLink.className="fa fa-play"
-            },1000)
+            },4000)
             //get audio link + play
     fetch(`${api}${langInp.value}/${input.value}`)
     .then(data=>data.json())
