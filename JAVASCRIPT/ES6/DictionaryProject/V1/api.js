@@ -7,6 +7,8 @@ let pron = document.querySelector('.pronunciation-text')
 let bodyText = document.querySelector('#body-text')
 let wordClass = document.querySelector('#word-class')
 
+
+
 searchBtn.addEventListener('click',()=>{
     fetch(`${api}${input.value}`)
 .then(data=>data.json())
@@ -30,3 +32,9 @@ searchBtn.addEventListener('click',()=>{
 })        
 })
 
+
+
+// var audio = new Audio(currentobj.phonetics[0].audio);
+// audio.play()
+
+// toggle button swith between pause and play
