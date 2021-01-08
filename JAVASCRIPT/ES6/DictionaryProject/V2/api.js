@@ -82,7 +82,7 @@ searchBtn.addEventListener('click', (e)=>{
                     let ex = res[y].meanings[i].definitions[z].example
                     if(ex == undefined){
                         ex = "There is no example"
-                    }else(ex = ex)
+                    }
                     exTex.innerText = " " + ex
                     exTex.style.margin = "0px 0px 16px"
                     exDiv.appendChild(exTittle)
@@ -100,11 +100,14 @@ searchBtn.addEventListener('click', (e)=>{
                     let syn = res[y].meanings[i].definitions[z].synonyms
                     if(syn == undefined){
                         syn = "There are no synonyms"
-                    }else(syn = ex)
+                    }
                     synTex.innerText = " " + syn
                     synTex.style.margin = "0px 0px 16px"
                     synDiv.appendChild(synTittle)
                     synDiv.appendChild(synTex)
+
+                   
+
         ///appendChild
                     col2.appendChild(defDiv)
                     col2.appendChild(exDiv)
@@ -145,6 +148,5 @@ audioLink.addEventListener('click',()=>{
     
     
 
-    
                     
     
