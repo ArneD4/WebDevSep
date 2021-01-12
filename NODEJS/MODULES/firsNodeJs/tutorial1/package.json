@@ -1,0 +1,25 @@
+{
+  "name": "intecbrussel",
+  "version": "1.0.0",
+  "description": "- HTML & CSS3\r - BOOTSTRAP 4\r - SAILS.JS\r - SASS\r - JAVASCRIPT\r - REACTJS\r - NODEJS",
+  "main": "index.js",
+  "dependencies": {
+    "fetch": "^1.1.0",
+    "node-fetch": "^2.6.1",
+    "youtube-dl": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArneD4/WebDevSep.git"
+  },
+  "author": "ArneD4",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArneD4/WebDevSep/issues"
+  },
+  "homepage": "https://github.com/ArneD4/WebDevSep#readme"
+}
