@@ -1,6 +1,8 @@
-const PrintUser = require('./customModule/myModule')
+const newUser = require('./customModule/myModule')
 
-let user = new PrintUser("arne","1234")
+let user1 = new newUser('Arne','01234');
+let user2 = new newUser('Tom','56789');
 
 
-
+user1.printUser()
+user2.printUser()
