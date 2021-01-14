@@ -1,6 +1,6 @@
 // fetch
 
-const intecbrussel = require('node-fetch') // import jodejs package 
+const intecbrussel = require('node-fetch') // import nodejs package 
 // const variable = require('packagename')
 
 
