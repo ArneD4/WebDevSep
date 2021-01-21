@@ -1,0 +1,62 @@
+[
+{
+    "name": "Air Max 1",
+    "year": 1987,
+    "img.src" : "img/img1.jpg"
+},
+{
+    "name": "Air Max Light",
+    "year": 1989,
+    "img.src" : "img/img2.jpg"
+},
+{
+    "name": "Air Max 90",
+    "year": 1990,
+    "img.src" : "img/img3.jpg"
+},
+{
+    "name": "Air Max 180",
+    "year": 1991,
+    "img.src" : "img/img4.jpg"
+},
+{
+    "name": "Air Max 93",
+    "year": 1993,
+    "img.src" : "img/img5.jpg"
+},
+{
+    "name": "Air Max 95",
+    "year": 1995,
+    "img.src" : "img/img6.jpg"
+},
+{
+    "name": "Air Max 97",
+    "year": 1997,
+    "img.src" : "img/img7.jpg"
+},
+{
+    "name": "Air Max Plus Tuned",
+    "year": 1998,
+    "img.src" : "img/img8.jpg"
+},
+{
+    "name": "Air Max 360",
+    "year": 2006,
+    "img.src" : "img/img9.jpg"
+},
+{
+    "name": "Air VaporMax",
+    "year": 2017,
+    "img.src" : "img/img10.jpg"
+},
+{
+    "name": "Air Max 270",
+    "year": 2018,
+    "img.src" : "img/img11.jpg"
+},
+{
+    "name": "Air Max 720",
+    "year": 2019,
+    "img.src" : "img/img12.jpg"
+}
+]
