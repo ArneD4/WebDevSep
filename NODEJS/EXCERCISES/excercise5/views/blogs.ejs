@@ -2,7 +2,13 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 bg-primary border p-5">
-           BLOGS
+            <% shoes.data.forEach(function(shoe){ %>
+                <p class="d-block"><%= shoe.name %></p>
+                <p class="d-block"><%= shoe.year %></p>
+                <img src="public/images/img1.jpg" alt="">
+               
+
+            <% }) %>
         </div>
     </div>
 </div>
