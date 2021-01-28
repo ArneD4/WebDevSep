@@ -27,8 +27,7 @@ export default class App extends Component {
             address: e.target.parentElement.Address.value,
             city: e.target.parentElement.City.value,
             zip: e.target.parentElement.Zip.value
-        },
-        this.users = this.state
+        }
         
         )
     }
