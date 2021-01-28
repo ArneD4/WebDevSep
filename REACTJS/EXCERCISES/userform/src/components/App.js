@@ -27,7 +27,9 @@ export default class App extends Component {
             address: e.target.parentElement.Address.value,
             city: e.target.parentElement.City.value,
             zip: e.target.parentElement.Zip.value
-        }
+        },
+        this.users = this.state
+        
         )
     }
 
@@ -84,7 +86,7 @@ export default class App extends Component {
                 <p>{this.state.username}</p>
                 <p>{this.state.email}</p>
                 <p>{this.state.city + " " + this.state.address + " " + this.state.zip}</p>
-                {users.push(this.state)}
+
 
 
 
