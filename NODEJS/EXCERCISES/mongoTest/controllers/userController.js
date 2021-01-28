@@ -1,11 +1,11 @@
-const User = require('../../models/User')
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-
 // USER CONTROLLER
+const User = require('../models/User')
+bcrypt = require('bcrypt')
 
-// get users controller
+
+// get user
 const getUsers = (req, res) => {
+
     User.find({}, (err, response) => {
         if (err) {
             res.json(err)
@@ -16,6 +16,7 @@ const getUsers = (req, res) => {
 }
 
 // get user by id
+
 const getUserById = (req, res) => {
     let userID = req.params.id
     User.findById(userID, (err, response) => {
@@ -32,9 +33,7 @@ const getUserById = (req, res) => {
     })
 }
 
-
-
-// post new user controller
+//add new user
 const addUser = (req, res) => {
     bcrypt.hash(req.body.password, 10)
         .then(protected_password => {
@@ -45,16 +44,14 @@ const addUser = (req, res) => {
             newUser.save()
                 .then(response => {
                     res.json({
-                        message: 'OK',
+                        message: 'Ok',
                         data: response
                     })
                 }).catch(err => {
                     res.json(err)
                 })
         })
-
 }
-
 
 const updateUserById = (req, res) => {
     let userID = req.params.id
@@ -127,4 +124,5 @@ const loginController = (req, res) => {
     })
 }
 
-module.exports = { getUsers, getUserById, addUser, updateUserById, deleteUserById, authController, loginController }
+
+module.exports = { getUsers, addUser, deleteUserById, updateUserById, getUserById, authController, loginController }

@@ -1,15 +1,15 @@
 var express = require('express');
 var router = express.Router();
 const checkToken = require('../middlewares/checkToken')
-const {getUsers,addUser,getUserById,updateUserById,deleteUserById,authController,loginController} = require('./controllers/userController')
+const{getUsers,addUser,deleteUserById,updateUserById,getUserById,authController,loginController} = require('../controllers/userController')
 
 /* GET users listing. */
-router.get('/',checkToken,getUsers);
+router.get('/', getUsers );
 
-// post routers
+//post router
 router.post('/',addUser)
 
-router.get('/:id',checkToken,getUserById)
+router.get('/:id',checkToken, getUserById)
 
 // update user
 router.put('/:id',checkToken,updateUserById)
