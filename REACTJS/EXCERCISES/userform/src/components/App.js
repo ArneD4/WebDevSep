@@ -85,6 +85,7 @@ export default class App extends Component {
                 <p>{this.state.username}</p>
                 <p>{this.state.email}</p>
                 <p>{this.state.city + " " + this.state.address + " " + this.state.zip}</p>
+               
 
 
 
