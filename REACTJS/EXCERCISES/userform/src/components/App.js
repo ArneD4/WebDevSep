@@ -12,7 +12,9 @@ export default class App extends Component {
             email: '',
             address: '',
             city: '',
-            zip: ''
+            zip: '',
+            check:''
+
         }
 
     }
@@ -26,7 +28,8 @@ export default class App extends Component {
             email: e.target.parentElement.Email.value,
             address: e.target.parentElement.Address.value,
             city: e.target.parentElement.City.value,
-            zip: e.target.parentElement.Zip.value
+            zip: e.target.parentElement.Zip.value,
+            check: e.target.parentElement.chb
         }
         
         )
@@ -74,14 +77,15 @@ export default class App extends Component {
                             </FormGroup>
                         </Col>
                     </Row>
-                    {/* <FormGroup check>
-                        <Input type="checkbox" name="check" id="Check" value=""/>
-                        <Label for="Check" check>Check me out</Label>
-                    </FormGroup> */}
+                    <FormGroup check>
+                        <Input type="checkbox" className="form-check d-inline" id="chb" required/>
+                        <Label for="chb" check>Accept</Label>
+                    </FormGroup>
                     <Button onClick={this.inputHandler}>Sign in</Button>
                 </Form>
                 <hr/>
                 <br></br>
+                {console.log(this.state)}
                 <p>{this.state.username}</p>
                 <p>{this.state.email}</p>
                 <p>{this.state.city + " " + this.state.address + " " + this.state.zip}</p>
