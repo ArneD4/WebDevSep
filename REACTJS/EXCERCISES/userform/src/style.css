@@ -2,6 +2,11 @@
 
 body {
     margin:60px!important;
+    background-color: rgb(47, 150, 218)!important;
+}
 
-    
+h1{
+    text-align: center;
+    color:white;
+    padding-bottom: 20px;
 }
