@@ -1,7 +1,7 @@
 import './index.css';
 import React, { Component } from 'react'
 import fetch from 'node-fetch'
-import { Button, Input, Label, Container, Row, Col, Media } from 'reactstrap'
+import { Button, Input, Container, Row, Col } from 'reactstrap'
 
 
 
@@ -20,42 +20,62 @@ export default class App extends Component {
   }
 
   render() {
-
-
-
-
     console.log(this.state)
     let imgSource = `http://openweathermap.org/img/wn/${this.state.weather[0].icon}@2x.png`;
-    console.log(imgSource)
+    let today = new Date()
+    let date = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`
+
+
+    console.log(date)
+
 
     return (
 
       <div>
         <h1 id="head">Check out the weather!</h1>
 
-        <Container className="Container">
-          <Row className="data">
-            <Col className="title">
-              <h3>{this.state.weather[0].main} </h3>
-              <h1>{this.state.name}, {this.state.sys.country}</h1>
-              <img id="img" src={imgSource}></img>
-            </Col>
-            <Col className="info">
-              <h2>{Math.round((this.state.main.temp) - 273.15)} °C </h2>
-              <p>Wind Speed:</p>
-              <h5>{this.state.wind.speed} MPH</h5>
-              <p>Humidity:</p>
-              <h5>{this.state.main.humidity} %</h5>
-            </Col>
-          </Row>
-
-
+        <Container className="Container m-auto text-center">
           <Row>
-            <Col id="search">
-              <div className="search">
-                <Input type="text" id="cityname" placeholder="City Name"></Input>
+            <Col md={4} className="mid mb-1 mt-1">
+              <Row className="search">
+                <h1>{this.state.name}, {this.state.sys.country}</h1>
+                <h4>{date}</h4>
+                <Input type="text" id="cityname" className="text-center" placeholder="City Name"></Input>
                 <Button onClick={() => this.getWeather(document.getElementById('cityname').value)}>What's the weather like?</Button>
-              </div>
+              </Row>
+            </Col>
+
+            <Col md={3} className="mid mb-1 mt-1 ">
+              <Row className="search">
+                <h2>{Math.round((this.state.main.temp) - 273.15)} °C </h2>
+                <h3>{this.state.weather[0].main} </h3>
+                <img id="img" src={imgSource} alt={`${this.state.sys.country}'s weather data`}></img>
+              </Row>
+            </Col>
+
+            <Col md={4} className="mid mb-1 mt-1">
+              <Row className="search">
+                <ul>
+                  <li>
+                    <h5>Wind Speed: </h5>
+                    <h4>{this.state.wind.speed} MPH</h4>
+                  </li>
+                  <li>
+                    <h5>Humidity: </h5>
+                    <h4>{this.state.main.humidity} %</h4>
+                  </li>
+                  <li>
+                    <h5>Max Temp: </h5>
+                    <h4>{Math.round((this.state.main.temp_max) - 273.15)} °C </h4>
+                  </li>
+                  <li>
+                    <h5>Min Temp: </h5>
+                    <h4>{Math.round((this.state.main.temp_min) - 273.15)} °C </h4>
+                  </li>
+                </ul>
+              </Row>
+
+
             </Col>
           </Row>
 
