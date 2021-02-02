@@ -22,34 +22,47 @@ export default class App extends Component {
   render() {
 
 
+
+
     console.log(this.state)
     let imgSource = `http://openweathermap.org/img/wn/${this.state.weather[0].icon}@2x.png`;
     console.log(imgSource)
+
     return (
 
       <div>
-        <Container>
+        <h1 id="head">Check out the weather!</h1>
+
+        <Container className="Container">
+          <Row className="data">
+            <Col className="title">
+              <h3>{this.state.weather[0].main} </h3>
+              <h1>{this.state.name}, {this.state.sys.country}</h1>
+              <img id="img" src={imgSource}></img>
+            </Col>
+            <Col className="info">
+              <h2>{Math.round((this.state.main.temp) - 273.15)} °C </h2>
+              <p>Wind Speed:</p>
+              <h5>{this.state.wind.speed} MPH</h5>
+              <p>Humidity:</p>
+              <h5>{this.state.main.humidity} %</h5>
+            </Col>
+          </Row>
+
+
           <Row>
             <Col id="search">
               <div className="search">
-                <Label for="cityname">City Name: </Label>
-                <Input type="text" id="cityname"></Input>
-                <Button onClick={() => this.getWeather(document.getElementById('cityname').value)}>Get Current Weather</Button>
+                <Input type="text" id="cityname" placeholder="City Name"></Input>
+                <Button onClick={() => this.getWeather(document.getElementById('cityname').value)}>What's the weather like?</Button>
               </div>
             </Col>
           </Row>
-          <Row>
-          <h1>Current Weather Situation in {this.state.name}</h1>
-            <Col>
-            <div className="data">
-              <h3>Temprature: {this.state.main.temp} F </h3>
-              <h3>Weather Condition: {this.state.weather[0].main} </h3>
-              <h3>Wind Speed: {this.state.wind.speed} MPH</h3>
-              <img id="img" src={imgSource}></img>
-              </div>              
-            </Col>              
-          </Row>
+
         </Container>
+
+
+
       </div>
     )
   }

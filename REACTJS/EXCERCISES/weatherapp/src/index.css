@@ -5,35 +5,112 @@
   margin: 0;
   font-family: "Quicksand";
   color: #333;
-  text-align: center;
+  border: 1px solid red;
+
 }
+
+body{
+    background: rgb(34,193,195);
+    background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(1,167,241,1) 100%);
+}
+
+#head{
+    text-align:center;
+    margin-top: 45px;
+    font-weight: bolder;
+}
+
+.Container{
+    padding: 15px;
+    margin: auto;
+    margin-top: 45px;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.13);
+    max-width: 550px;
+
+}
+
+.info{
+    background-color: rgba(0, 0, 0, 0.13);
+    border-radius: 15px;
+    padding: 15px;
+    margin-left: auto;  
+}
+
+.title{
+    padding:0px;
+}
+
+.data{
+    display: flex;
+    flex-direction: row;
+}
+
+#img{
+    background-color: rgba(0, 0, 0, 0.13);
+    border-radius: 15px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    bottom:0;
+}
+
+
+
 
 .search{
     padding:30px;
-    color: darkblue;
+    text-align: center;
 
+}
+
+
+
+.search Input{
+    margin: 3px;
+    padding: 3px;
+    border-radius: 6px;
+    border-style: none;
+    font-size: 18px;
+}
+
+.search Button{
+    margin: 3px;
+    padding: 3px;
+    border-radius: 6px;
+    border-style: none;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.13);
+    color: rgba(255, 255, 255, 0.541);
+}
+
+.search Button:hover{
+    background-color: rgba(0, 0, 0, 0.794);
+    color: rgba(255, 255, 255, 0.842);
 }
 
 h1{
-    color: darkcyan;
-    padding-bottom: 30px;
-
-}
-
-
-.data{
- background-color: darkcyan;
- 
-}
-
-.data h3{
+    font-size: 45px;
+    font-weight: lighter;
     color: white;
-    padding:5px;
-    margin:3px;
-    width:50%;;
+    margin-bottom: 6px;
+}
+h2{
+    font-size: 40px;
+    font-weight: lighter;
+    color: rgb(175, 226, 226);
+    padding: 1px;
+}
+h3{
+    font-size: 35px;
+    color: white;
+    }
+h5{
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.541);
+    font-weight: lighter;
+}
+p{
+    font-size: 15px;
 }
 
-#img {
-background-color: darkgoldenrod;
 
-}
