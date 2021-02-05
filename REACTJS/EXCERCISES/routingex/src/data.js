@@ -1,4 +1,4 @@
-export  const nikeAir = [
+export const nikeAir = [
     {
         "name": "Air Max 1",
         "year": 1987,
